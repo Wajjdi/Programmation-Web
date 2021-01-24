@@ -109,9 +109,14 @@ class Grille {
         this.detecterAlignement();
         this.groupeAlignement();
         this.vider();
+        for (let l = 0; l < this.nbLignes; l++) {
+          this.chute_de_cookie();
+        }
       }
+      
       // on affiche l'image dans le div pour la faire apparaitre à l'écran.
       div.appendChild(img);
+    
     });
   }
 
