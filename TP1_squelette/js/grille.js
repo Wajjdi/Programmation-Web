@@ -112,11 +112,13 @@ class Grille {
         for (let l = 0; l < this.nbLignes; l++) {
           this.chute_de_cookie();
         }
+        // si vous voulez faire tout sur un seul bouton enlever le commentaire ci-dessous
+        // this.nouveau_cookie();
       }
-      
+
       // on affiche l'image dans le div pour la faire apparaitre à l'écran.
       div.appendChild(img);
-    
+
     });
   }
 
@@ -131,10 +133,10 @@ class Grille {
       for (let c = 0; c < this.nbColonnes; c++) {
         if (c + 2 < this.nbColonnes) {
           if (this.tabCookies[l][c].type == this.tabCookies[l][c + 1].type && this.tabCookies[l][c + 1].type == this.tabCookies[l][c + 2].type) {
-              this.tabCookies[l][c].marque = 1;
-              this.tabCookies[l][c + 1].marque = 1;
-              this.tabCookies[l][c + 2].marque = 1;
-              console.log("ligne = " + this.tabCookies[l][c].ligne + " " + this.tabCookies[l][c].colonne + " " + this.tabCookies[l][c + 1].colonne + " " + this.tabCookies[l][c + 2].colonne);
+            this.tabCookies[l][c].marque = 1;
+            this.tabCookies[l][c + 1].marque = 1;
+            this.tabCookies[l][c + 2].marque = 1;
+            console.log("ligne = " + this.tabCookies[l][c].ligne + " " + this.tabCookies[l][c].colonne + " " + this.tabCookies[l][c + 1].colonne + " " + this.tabCookies[l][c + 2].colonne);
           }
         }
       }
@@ -146,13 +148,13 @@ class Grille {
       for (let l = 0; l < this.nbLignes; l++) {
         if (l + 2 < this.nbLignes) {
           //if (this.tabCookies[l][c].marque == this.tabCookies[l + 1][c].marque && this.tabCookies[l][c].marque == this.tabCookies[l + 2][c].marque){
-            if (this.tabCookies[l][c].type == this.tabCookies[l + 1][c].type && this.tabCookies[l + 1][c].type == this.tabCookies[l + 2][c].type) {
-              this.tabCookies[l][c].marque = 1;
-              this.tabCookies[l + 1][c].marque = 1;
-              this.tabCookies[l + 2][c].marque = 1;
-              console.log("colonne = " + this.tabCookies[l][c].colonne + " " + this.tabCookies[l][c].ligne + " " + this.tabCookies[l + 1][c].ligne + " " + this.tabCookies[l + 2][c].ligne);
-            }
-          
+          if (this.tabCookies[l][c].type == this.tabCookies[l + 1][c].type && this.tabCookies[l + 1][c].type == this.tabCookies[l + 2][c].type) {
+            this.tabCookies[l][c].marque = 1;
+            this.tabCookies[l + 1][c].marque = 1;
+            this.tabCookies[l + 2][c].marque = 1;
+            console.log("colonne = " + this.tabCookies[l][c].colonne + " " + this.tabCookies[l][c].ligne + " " + this.tabCookies[l + 1][c].ligne + " " + this.tabCookies[l + 2][c].ligne);
+          }
+
         }
       }
     }
@@ -180,7 +182,7 @@ class Grille {
       }
     }
   }
-  
+
   resetmarque() {
     for (let c = 0; c < this.nbColonnes; c++) {
       for (let l = 0; l < this.nbLignes; l++) {
@@ -216,21 +218,21 @@ class Grille {
     }
   }
 
-nouveau_cookie() {
-  for (let l = 0; l < this.nbLignes; l++) {
-    for (let c = 0; c < this.nbColonnes; c++) {
-      if(this.tabCookies[l][c].marque===1){
-        let type = Math.floor(Math.random() * 6); // retourne un random entre 0 et 5
-        let cookie = new Cookie(type, l, c);
-        this.tabCookies[l][c].type = cookie.type;
-        this.tabCookies[l][c].marque = cookie.marque;
-        this.tabCookies[l][c].htmlImage.src=cookie.htmlImage.src;
-        this.tabCookies[l][c].htmlImage.classList.remove("cookie-invisible");
-        this.tabCookies[l][c].deselectionnee();
+  nouveau_cookie() {
+    for (let l = 0; l < this.nbLignes; l++) {
+      for (let c = 0; c < this.nbColonnes; c++) {
+        if (this.tabCookies[l][c].marque === 1) {
+          let type = Math.floor(Math.random() * 6); // retourne un random entre 0 et 5
+          let cookie = new Cookie(type, l, c);
+          this.tabCookies[l][c].type = cookie.type;
+          this.tabCookies[l][c].marque = cookie.marque;
+          this.tabCookies[l][c].htmlImage.src = cookie.htmlImage.src;
+          this.tabCookies[l][c].htmlImage.classList.remove("cookie-invisible");
+          this.tabCookies[l][c].deselectionnee();
+        }
       }
     }
   }
-}
   /**
    * Initialisation du niveau de départ. Le paramètre est le nombre de cookies différents
    * dans la grille. 4 types (4 couleurs) = facile de trouver des possibilités de faire
@@ -250,12 +252,12 @@ nouveau_cookie() {
       for (let c = 0; c < this.nbColonnes; c++) {
         console.log("J'ai crée une cookie ligne " + l + " Colonne " + c);
         let type = Math.floor(Math.random() * nbDeCookiesDifferents); // retourne un random entre 0 et 5
-       if (l-1>=0 && c-1>=0){
-        while(type === this.tabCookies [l-1][c].type || type === this.tabCookies[l][c-1].type  ){
-          type = Math.floor(Math.random() * nbDeCookiesDifferents);
-          console.log("Je passe dedans");
+        if (l - 1 >= 0 && c - 1 >= 0) {
+          while (type === this.tabCookies[l - 1][c].type || type === this.tabCookies[l][c - 1].type) {
+            type = Math.floor(Math.random() * nbDeCookiesDifferents);
+            console.log("Je passe dedans");
+          }
         }
-      }
         let cookie = new Cookie(type, l, c);
         this.tabCookies[l][c] = cookie;
       }
