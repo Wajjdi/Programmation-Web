@@ -57,7 +57,14 @@ class Grille {
           }
         }
 
-
+        this.detecterAlignement();
+        this.groupeAlignement();
+        this.vider();
+        for (let l = 0; l < this.nbLignes; l++) {
+          this.chute_de_cookie();
+        }
+        // si vous voulez faire tout sur un seul bouton enlever le commentaire ci-dessous
+        this.nouveau_cookie();
 
       };
 
@@ -99,6 +106,14 @@ class Grille {
           Cookie.swapCookies(this.cookiesCliquees[0], this.cookiesCliquees[1]);
           //this.resetmarque();
         }
+        this.detecterAlignement();
+        this.groupeAlignement();
+        this.vider();
+        for (let l = 0; l < this.nbLignes; l++) {
+          this.chute_de_cookie();
+        }
+        // si vous voulez faire tout sur un seul bouton enlever le commentaire ci-dessous
+        this.nouveau_cookie();
         this.cookiesCliquees[0].deselectionnee();
         this.cookiesCliquees[1].deselectionnee();
         this.cookiesCliquees = [];
@@ -108,10 +123,6 @@ class Grille {
       btn.onclick = () => {
         this.detecterAlignement();
         this.groupeAlignement();
-        this.vider();
-        for (let l = 0; l < this.nbLignes; l++) {
-          this.chute_de_cookie();
-        }
         // si vous voulez faire tout sur un seul bouton enlever le commentaire ci-dessous
         // this.nouveau_cookie();
       }
